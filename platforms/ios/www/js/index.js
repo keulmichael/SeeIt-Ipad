@@ -53,14 +53,14 @@ geocoder = new google.maps.Geocoder();
 function onCapture(e) { 
 if (settings.positionPaysage==false)
 	{
-	navigator.accelerometer.getCurrentAcceleration(accelerometerSuccessPortrait, accelerometerErrorPortrait);
+//	navigator.accelerometer.getCurrentAcceleration(accelerometerSuccessPortrait, accelerometerErrorPortrait);
 
-	function accelerometerSuccessPortrait(acceleration) {
-if (acceleration.x>1 || acceleration.x<-1 && acceleration.y<9 && acceleration.z>1 || acceleration.z<-1 ){
-    alert("Veuillez tenir l\'appareil en mode portrait.\nLe blocage en mode portrait peut être activé dans les options.");
-		}
+//	function accelerometerSuccessPortrait(acceleration) {
+//if (acceleration.x>1 || acceleration.x<-1 && acceleration.y<9 && acceleration.z>1 || acceleration.z<-1 ){
+//   alert("Veuillez tenir l\'appareil en mode portrait.\nLe blocage en mode portrait peut être activé dans les options.");
+//		}
 
-	else {
+//	else {
     var callerId = getTargetId(e, "a");
     
     switch (callerId) {
@@ -92,23 +92,23 @@ if (acceleration.x>1 || acceleration.x<-1 && acceleration.y<9 && acceleration.z>
                                                                   });
 
 
-}
-}
-function accelerometerErrorPortrait() {
-    alert('Veuillez activer l\'accéléromètre');
-};								  
+//}
+//}
+//function accelerometerErrorPortrait() {
+//   alert('Veuillez activer l\'accéléromètre');
+//};								  
 }
 
 else
 {
-navigator.accelerometer.getCurrentAcceleration(accelerometerSuccessPaysage, accelerometerErrorPaysage);
+//navigator.accelerometer.getCurrentAcceleration(accelerometerSuccessPaysage, accelerometerErrorPaysage);
 
-function accelerometerSuccessPaysage(acceleration) {
-if (acceleration.x<9 || acceleration.x>-9 && acceleration.y<0 || acceleration.y>1 && acceleration.z<0 || acceleration.y>1){
-    alert("Veuillez tenir l'appareil en mode paysage.\nLe blocage en mode portrait peut être activé dans les options.");
-		}
+//function accelerometerSuccessPaysage(acceleration) {
+//if (acceleration.x<9 || acceleration.x>-9 && acceleration.y<0 || acceleration.y>1 && acceleration.z<0 || acceleration.y>1){
+//    alert("Veuillez tenir l'appareil en mode paysage.\nLe blocage en mode portrait peut être activé dans les options.");
+//		}
 
-	else {
+//	else {
     var callerId = getTargetId(e, "a");
     
     switch (callerId) {
@@ -144,9 +144,9 @@ if (acceleration.x<9 || acceleration.x>-9 && acceleration.y<0 || acceleration.y>
 	};
 
 
-function accelerometerErrorPaysage() {
-    alert('Veuillez activer l\'acc&eacute;l&eacute;rom&egrave;tre');
-};
+//function accelerometerErrorPaysage() {
+//    alert('Veuillez activer l\'acc&eacute;l&eacute;rom&egrave;tre');
+//};
 		
 }
 }
