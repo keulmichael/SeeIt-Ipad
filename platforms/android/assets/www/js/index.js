@@ -189,39 +189,39 @@ ftQuali.upload(imageData, fichieruploadQuali, winQuali, failQuali, options);
  
 
 
-require(["dojo/request"], function(request){    
-request.get('http://www.appliseeit.com/mobile/record_gps.php?num='+num+'&x=&y=&adress=').then(function(response271){ 	
-navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
+//require(["dojo/request"], function(request){    
+//request.get('http://www.appliseeit.com/mobile/record_gps.php?num='+num+'&x=&y=&adress=').then(function(response271){ 	
+//navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
 	
-function geolocationSuccess(position) {alert("Position enregistrée !\n"+position.coords.latitude+", "+position.coords.longitude);
-require(["dojo/request"], function(request){    
-var num = document.getElementById("num").value;	
-var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-geocoder.geocode({'latLng': latlng}, function(results, status) {
-	if (status == google.maps.GeocoderStatus.OK) {
-if (results[1]) {
-      request.get('http://www.appliseeit.com/mobile/record_gps.php?num='+num+'&x='+position.coords.latitude+'&y='+position.coords.longitude+'&adress='+results[1].formatted_address).then(function(response276){document.getElementById("affichFormattedAddress").innerHTML="<font size=2 color=grey>"+results[1].formatted_address+"</font>";}) ;
-      }}
-})	
+//function geolocationSuccess(position) {alert("Position enregistrée !\n"+position.coords.latitude+", "+position.coords.longitude);
+//require(["dojo/request"], function(request){    
+//var num = document.getElementById("num").value;	
+//var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+//geocoder.geocode({'latLng': latlng}, function(results, status) {
+//	if (status == google.maps.GeocoderStatus.OK) {
+//if (results[1]) {
+ //     request.get('http://www.appliseeit.com/mobile/record_gps.php?num='+num+'&x='+position.coords.latitude+'&y='+position.coords.longitude+'&adress='+results[1].formatted_address).then(function(response276){document.getElementById("affichFormattedAddress").innerHTML="<font size=2 color=grey>"+results[1].formatted_address+"</font>";}) ;
+//      }}
+//})	
 
-    })
-}
+//    })
+//}
 
-function geolocationError(error) {
-switch(error.code){
-    case error.PERMISSION_DENIED:
-      alert("L'utilisateur n'a pas autorisé l'accés à sa position");
-      break;      
-    case error.POSITION_UNAVAILABLE:
-      alert("L'emplacement de l'utilisateur n'a pas pu être déterminé");
-      break;
-    case error.TIMEOUT:
-      alert("Le service n'a pas répondu à temps");
-      break;
-    }
-}
-	}) 	
-})	
+//function geolocationError(error) {
+//switch(error.code){
+//    case error.PERMISSION_DENIED:
+//      alert("L'utilisateur n'a pas autorisé l'accés à sa position");
+//      break;      
+ //   case error.POSITION_UNAVAILABLE:
+ //     alert("L'emplacement de l'utilisateur n'a pas pu être déterminé");
+ //     break;
+ //   case error.TIMEOUT:
+ //     alert("Le service n'a pas répondu à temps");
+  //    break;
+  //  }
+//}
+//	}) 	
+//})	
 
 }
 
