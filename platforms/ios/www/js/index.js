@@ -1,16 +1,3 @@
-var app = {
-
-    initialize: function() {
-        this.bindEvents();
-    },
-    
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-	    
 function Settings() {
 if ((typeof Camera !== "undefined")) {
 this.destinationType = Camera.DestinationType.FILE_URI; // cameraOptions: destinationType
@@ -29,8 +16,10 @@ this.saveToPhotoAlbum = false; // cameraOptions: saveToPhotoAlbum
 this.popoverOptions = new CameraPopoverOptions(100, 100, 100, 100, Camera.PopoverArrowDirection.ARROW_DOWN); // cameraOptions: popoverOptions
 }
 
-var settings;
-	
+document.addEventListener('deviceready', onDeviceReady, false);
+
+
+function onDeviceReady (){
 	
 	var networkState = navigator.network.connection.type;
 
@@ -46,16 +35,16 @@ var settings;
 if (states[networkState] == 'Pas de connexion r&eacute;seau') {
         document.getElementById("problemeReseau").innerHTML="<font color='red' size='2'>Absence de r&eacute;seau. Veuillez fermer l'application et l'ouvrir &agrave; nouveau lorsque l'appareil sera connect&eacute;.</font>";}
 
-    
-    settings = new Settings();
-		
+ else {   
+$("#open_camera_button").bind ("click", onCapture);
+$("#open_lib_button").bind ("click", onCapture);
+$("#open_alb_button").bind ("click", onCapture);
+ }
+}
+	
+var settings
+settings = new Settings();   
 
-    $("#open_camera_button").bind ("click", onCapture);
-    $("#open_lib_button").bind ("click", onCapture);
-    $("#open_alb_button").bind ("click", onCapture);
-    
-    document.addEventListener("online", onOnline, false);
-    document.addEventListener("offline", onOffline, false)
 	
 var geocoder;
 geocoder = new google.maps.Geocoder();
@@ -68,7 +57,7 @@ if (settings.positionPaysage==false)
 
 	function accelerometerSuccessPortrait(acceleration) {
 if (acceleration.x>1 || acceleration.x<-1 && acceleration.y<9 && acceleration.z>1 || acceleration.z<-1 ){
-    alert("Veuillez tenir l\'appareil en mode portrait.\nLe blocage en mode portrait peut être activé dans les options.");
+    alert("Veuillez tenir l\'appareil en mode portrait.\nLe blocage en mode portrait peut Ãªtre activÃ© dans les options.");
 		}
 
 	else {
@@ -106,7 +95,7 @@ if (acceleration.x>1 || acceleration.x<-1 && acceleration.y<9 && acceleration.z>
 }
 }
 function accelerometerErrorPortrait() {
-    alert('Veuillez activer l\'accéléromètre');
+    alert('Veuillez activer l\'accÃ©lÃ©romÃ¨tre');
 };								  
 }
 
@@ -116,7 +105,7 @@ navigator.accelerometer.getCurrentAcceleration(accelerometerSuccessPaysage, acce
 
 function accelerometerSuccessPaysage(acceleration) {
 if (acceleration.x<9 || acceleration.x>-9 && acceleration.y<0 || acceleration.y>1 && acceleration.z<0 || acceleration.y>1){
-    alert("Veuillez tenir l'appareil en mode paysage.\nLe blocage en mode portrait peut être activé dans les options.");
+    alert("Veuillez tenir l'appareil en mode paysage.\nLe blocage en mode portrait peut Ãªtre activÃ© dans les options.");
 		}
 
 	else {
@@ -203,7 +192,7 @@ require(["dojo/request"], function(request){
 request.get('http://www.appliseeit.com/mobile/record_gps.php?num='+num+'&x=&y=&adress=').then(function(response271){ 	
 navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
 	
-function geolocationSuccess(position) {alert("Position enregistrée !\n"+position.coords.latitude+", "+position.coords.longitude);
+function geolocationSuccess(position) {alert("Position enregistrÃ©e !\n"+position.coords.latitude+", "+position.coords.longitude);
 require(["dojo/request"], function(request){    
 var num = document.getElementById("num").value;	
 var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -220,13 +209,13 @@ if (results[1]) {
 function geolocationError(error) {
 switch(error.code){
     case error.PERMISSION_DENIED:
-      alert("L'utilisateur n'a pas autorisé l'accés à sa position");
+      alert("L'utilisateur n'a pas autorisÃ© l'accÃ©s Ã  sa position");
       break;      
     case error.POSITION_UNAVAILABLE:
-      alert("L'emplacement de l'utilisateur n'a pas pu être déterminé");
+      alert("L'emplacement de l'utilisateur n'a pas pu Ãªtre dÃ©terminÃ©");
       break;
     case error.TIMEOUT:
-      alert("Le service n'a pas répondu à temps");
+      alert("Le service n'a pas rÃ©pondu Ã  temps");
       break;
     }
 }
@@ -258,10 +247,4 @@ function getElement(element) {
     
     return element;
 }
-    },
 
-
-  receivedEvent: function(id) {}
-};
-
-app.initialize();
