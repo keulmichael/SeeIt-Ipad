@@ -149,8 +149,8 @@ else
 //    alert('Veuillez activer l\'acc&eacute;l&eacute;rom&egrave;tre');
 //};
 		
-}
-}
+//}
+//}
 
 	
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -226,7 +226,7 @@ ftQuali.upload(imageData, fichieruploadQuali, winQuali, failQuali, options);
 }
 
 
-function onCaptureError(message) {alert(message); }
+function onCaptureError(message) {alert('erreur capture'); }
 
 
 
