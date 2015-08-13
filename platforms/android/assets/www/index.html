@@ -26,8 +26,11 @@
 
 <script type="text/javascript">
 //INITIALIZE GOOGLE MAP
-
-window.onload = function() {nombrePhotos();setInterval(nombrePhotos, 10000);};
+var geocoder;
+function initialize() {
+geocoder = new google.maps.Geocoder();
+}
+window.onload = function() {initialize();nombrePhotos();setInterval(nombrePhotos, 10000);};
 </script>
 </head>
 <body style="visibility:hidden;">
@@ -39,10 +42,10 @@ window.onload = function() {nombrePhotos();setInterval(nombrePhotos, 10000);};
 <table><tr><td><img src="http://www.appliseeit.com/mobile/image/pull-to-refresh-arrow.png" align="center"></td><td><font color=grey size=2> Chargement en cours...</font></td></tr></table>
 </div>
 <div align="center"><font size='2' color='grey'>Les photos les plus r&eacute;centes</font></div>
-<div data-dojo-type="dojox/mobile/Container" style="background-color:#758DA7;height:170px;">
+<div data-dojo-type="dojox/mobile/Container" style="background-color:#758DA7;height:250px;">
 <div data-dojo-type="dojox/mobile/PageIndicator" ></div>
 <div data-dojo-type="dojox/mobile/SwapView">
-<img src="http://www.appliseeit.com/public/images/icone-seeit.png" style="width:150px;display: block;margin-left: auto;margin-right: auto" />
+<img src="http://www.appliseeit.com/public/images/icone-seeit.png" style="width:200px;display: block;margin-left: auto;margin-right: auto" />
 </div>
 <div data-dojo-type="dojox/mobile/SwapView">
 <div id='logphotoaccueil_1'></div>
@@ -71,8 +74,8 @@ window.onload = function() {nombrePhotos();setInterval(nombrePhotos, 10000);};
 <div align="center"><font size=3 color=grey align='center'>Nombre de photos en ligne</font></div>
 <div id="gauge"></div>
 <ul data-dojo-type="dojox/mobile/RoundRectList">
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/iconeAlbum.png', rightText:'Consulter', moveTo:'album'" style="background-color:#758DA7;color:white;">Album</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/iconeApparareilphoto2.png', rightText:'Prendre', moveTo:'tournees'" style="background-color:#758DA7;color:white;">Photos</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/iconeAlbum.png', rightText:'Consulter', moveTo:'album'">Album</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/iconeApparareilphoto2.png', rightText:'Prendre', moveTo:'tournees'">Photos</li>
 </ul>
 <br>
 <div id='problemeReseau' align="center"></div>
@@ -86,22 +89,22 @@ window.onload = function() {nombrePhotos();setInterval(nombrePhotos, 10000);};
 <table align=center><tr><td><img src="http://www.appliseeit.com/mobile/image/pull-to-refresh-arrow.png"></td><td><font color=grey size=2> Chargement en cours...</font></td></tr></table>
 </div>
 <ul data-dojo-type="dojox/mobile/RoundRectList">
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,0,35,35', onClick: function(e){affichPointsTournees('Animaux')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Animaux</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,35,35,35', onClick: function(e){affichPointsTournees('Architecture')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Architecture</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,70,35,35', onClick: function(e){affichPointsTournees('C&eacute;l&eacute;brit&eacute;s')}, moveTo:'#'" style="background-color:white;color:#758DA7;">C&eacute;l&eacute;brit&eacute;s</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,105,35,35', onClick: function(e){affichPointsTournees('D&eacute;coration')}, moveTo:'#'" style="background-color:white;color:#758DA7;">D&eacute;coration</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,140,35,35', onClick: function(e){affichPointsTournees('Ev&eacute;nements')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Ev&eacute;nements</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,0,35,35', onClick: function(e){affichPointsTournees('Faits divers')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Faits divers</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,35,35,35', onClick: function(e){affichPointsTournees('Gastronomie')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Gastronomie</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,70,35,35', onClick: function(e){affichPointsTournees('Insolite')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Insolite</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,105,35,35', onClick: function(e){affichPointsTournees('Jeux')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Jeux</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,140,35,35', onClick: function(e){affichPointsTournees('Loisirs')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Loisirs</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,0,35,35', onClick: function(e){affichPointsTournees('Nature')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Nature</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,35,35,35', onClick: function(e){affichPointsTournees('Paysage')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Paysage</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,70,35,35', onClick: function(e){affichPointsTournees('Restaurant')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Restaurant</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,105,35,35', onClick: function(e){affichPointsTournees('Selfie')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Selfie</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,140,35,35', onClick: function(e){affichPointsTournees('Tourisme')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Tourisme</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,0,35,35', onClick: function(e){affichPointsTournees('Voyages')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Voyages</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,0,35,35', onClick: function(e){affichPointsTournees('Animaux')}, moveTo:'#'">Animaux</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,35,35,35', onClick: function(e){affichPointsTournees('Architecture')}, moveTo:'#'">Architecture</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,70,35,35', onClick: function(e){affichPointsTournees('C&eacute;l&eacute;brit&eacute;s')}, moveTo:'#'">C&eacute;l&eacute;brit&eacute;s</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,105,35,35', onClick: function(e){affichPointsTournees('D&eacute;coration')}, moveTo:'#'">D&eacute;coration</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,140,35,35', onClick: function(e){affichPointsTournees('Ev&eacute;nements')}, moveTo:'#'">Ev&eacute;nements</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,0,35,35', onClick: function(e){affichPointsTournees('Faits divers')}, moveTo:'#'">Faits divers</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,35,35,35', onClick: function(e){affichPointsTournees('Gastronomie')}, moveTo:'#'">Gastronomie</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,70,35,35', onClick: function(e){affichPointsTournees('Insolite')}, moveTo:'#'">Insolite</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,105,35,35', onClick: function(e){affichPointsTournees('Jeux')}, moveTo:'#'">Jeux</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,140,35,35', onClick: function(e){affichPointsTournees('Loisirs')}, moveTo:'#'">Loisirs</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,0,35,35', onClick: function(e){affichPointsTournees('Nature')}, moveTo:'#'">Nature</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,35,35,35', onClick: function(e){affichPointsTournees('Paysage')}, moveTo:'#'">Paysage</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,70,35,35', onClick: function(e){affichPointsTournees('Restaurant')}, moveTo:'#'">Restaurant</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,105,35,35', onClick: function(e){affichPointsTournees('Selfie')}, moveTo:'#'">Selfie</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,140,35,35', onClick: function(e){affichPointsTournees('Tourisme')}, moveTo:'#'">Tourisme</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,0,35,35', onClick: function(e){affichPointsTournees('Voyages')}, moveTo:'#'">Voyages</li>
 </ul>
 </div>
 
@@ -112,22 +115,22 @@ window.onload = function() {nombrePhotos();setInterval(nombrePhotos, 10000);};
 <table><tr><td><img src="http://www.appliseeit.com/mobile/image/pull-to-refresh-arrow.png"></td><td><font color=grey size=2> Chargement en cours...</font></td></tr></table>
 </div>
 <ul data-dojo-type="dojox/mobile/RoundRectList">
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,0,35,35', onClick: function(e){affichPointsAlbum('Animaux')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Animaux</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,35,35,35', onClick: function(e){affichPointsAlbum('Architecture')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Architecture</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,70,35,35', onClick: function(e){affichPointsAlbum('C&eacute;l&eacute;brit&eacute;s')}, moveTo:'#'" style="background-color:white;color:#758DA7;">C&eacute;l&eacute;brit&eacute;s</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,105,35,35', onClick: function(e){affichPointsAlbum('D&eacute;coration')}, moveTo:'#'" style="background-color:white;color:#758DA7;">D&eacute;coration</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,140,35,35', onClick: function(e){affichPointsAlbum('Ev&eacute;nements')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Ev&eacute;nements</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,0,35,35', onClick: function(e){affichPointsAlbum('Faits divers')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Faits divers</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,35,35,35', onClick: function(e){affichPointsAlbum('Gastronomie')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Gastronomie</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,70,35,35', onClick: function(e){affichPointsAlbum('Insolite')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Insolite</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,105,35,35', onClick: function(e){affichPointsAlbum('Jeux')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Jeux</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,140,35,35', onClick: function(e){affichPointsAlbum('Loisirs')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Loisirs</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,0,35,35', onClick: function(e){affichPointsAlbum('Nature')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Nature</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,35,35,35', onClick: function(e){affichPointsAlbum('Paysage')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Paysage</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,70,35,35', onClick: function(e){affichPointsAlbum('Restaurant')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Restaurant</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,105,35,35', onClick: function(e){affichPointsAlbum('Selfie')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Selfie</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,140,35,35', onClick: function(e){affichPointsAlbum('Tourisme')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Tourisme</li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,0,35,35', onClick: function(e){affichPointsAlbum('Voyages')}, moveTo:'#'" style="background-color:white;color:#758DA7;">Voyages</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,0,35,35', onClick: function(e){affichPointsAlbum('Animaux')}, moveTo:'#'">Animaux</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,35,35,35', onClick: function(e){affichPointsAlbum('Architecture')}, moveTo:'#'">Architecture</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,70,35,35', onClick: function(e){affichPointsAlbum('C&eacute;l&eacute;brit&eacute;s')}, moveTo:'#'">C&eacute;l&eacute;brit&eacute;s</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,105,35,35', onClick: function(e){affichPointsAlbum('D&eacute;coration')}, moveTo:'#'">D&eacute;coration</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,140,35,35', onClick: function(e){affichPointsAlbum('Ev&eacute;nements')}, moveTo:'#'">Ev&eacute;nements</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,0,35,35', onClick: function(e){affichPointsAlbum('Faits divers')}, moveTo:'#'">Faits divers</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,35,35,35', onClick: function(e){affichPointsAlbum('Gastronomie')}, moveTo:'#'">Gastronomie</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,70,35,35', onClick: function(e){affichPointsAlbum('Insolite')}, moveTo:'#'">Insolite</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,105,35,35', onClick: function(e){affichPointsAlbum('Jeux')}, moveTo:'#'">Jeux</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,140,35,35', onClick: function(e){affichPointsAlbum('Loisirs')}, moveTo:'#'">Loisirs</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,0,35,35', onClick: function(e){affichPointsAlbum('Nature')}, moveTo:'#'">Nature</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,35,35,35', onClick: function(e){affichPointsAlbum('Paysage')}, moveTo:'#'">Paysage</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,70,35,35', onClick: function(e){affichPointsAlbum('Restaurant')}, moveTo:'#'">Restaurant</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,105,35,35', onClick: function(e){affichPointsAlbum('Selfie')}, moveTo:'#'">Selfie</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'0,140,35,35', onClick: function(e){affichPointsAlbum('Tourisme')}, moveTo:'#'">Tourisme</li>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="icon:'http://www.appliseeit.com/mobile/cameras.jpg', iconPos:'35,0,35,35', onClick: function(e){affichPointsAlbum('Voyages')}, moveTo:'#'">Voyages</li>
 </ul>
 </div>
 
@@ -156,7 +159,7 @@ window.onload = function() {nombrePhotos();setInterval(nombrePhotos, 10000);};
 <li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="">Orientation auto
 <div data-dojo-type="dojox/mobile/Switch" data-dojo-props="onStateChanged:function(newStateOrientation){changeCorrectOrientation(newStateOrientation)}" value="off"></div>
 <li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="">Blocage Position (Paysage)
-<div data-dojo-type="dojox/mobile/Switch" data-dojo-props="onStateChanged:function(){alert('Option Ã  venir dans les prochaines versions');}" value="off"></div>
+<div data-dojo-type="dojox/mobile/Switch" data-dojo-props="onStateChanged:function(){alert('Option Ã  venir dans les prochaines versions');}" value="off"></div>
 <li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="">Blocage Camera (Portrait)
 <div data-dojo-type="dojox/mobile/Switch" data-dojo-props="onStateChanged:function(newStatePosition){changePositionPortrait(newStatePosition)}" value="off"></div>
 <li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="">Camera Frontale
