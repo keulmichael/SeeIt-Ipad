@@ -1,8 +1,8 @@
   function listenerTailleEcran(requeteMedia) {
 	var orientationPortrait = document.getElementById('orientationPortrait');
 	if (requeteMedia.matches) {  
-	document.getElementById('containerAccueil').style.height = '470px';
-	document.getElementById('icone-seeit.png').style.width = '440px';	
+	document.getElementById('containerAccueil').style.height = '460px';
+	document.getElementById('icone-seeit.png').style.width = '430px';	
       	document.getElementById('photoaccueil_1').style.width = '93%';
       	document.getElementById('photoaccueil_2').style.width = '93%';
       	document.getElementById('photoaccueil_3').style.width = '93%';
