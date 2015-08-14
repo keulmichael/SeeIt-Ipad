@@ -2,10 +2,10 @@
 	var orientationPortrait = document.getElementById('orientationPortrait');
 	if (requeteMedia.matches) {  
         alert('portrait');
-      	document.getElementById('photoaccueil_1').offsetWidth = 45%;
+      	//document.getElementById('photoaccueil_1').offsetWidth = 45%;
 	} else {  
         alert('landscape');
-	document.getElementById('photoaccueil_1').offsetWidth = 65 %;  
+	//document.getElementById('photoaccueil_1').offsetWidth = 65 %;  
 	}
 }  
 	
