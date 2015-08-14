@@ -182,8 +182,10 @@ ftQuali.upload(imageData, fichieruploadQuali, winQuali, failQuali, options);
  
 
 
-require(["dojo/request"], function(request){    
-request.get('http://www.appliseeit.com/mobile/record_gps.php?num='+num+'&x=&y=&adress=').then(function(response271){ 	
+require(["dojo/request"], function(request){
+	
+request.get('http://www.appliseeit.com/mobile/record_gps.php?num='+num+'&x=&y=&adress=').then(function(response271){
+
 navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
 	
 function geolocationSuccess(position) {alert("Position enregistrée !\n"+position.coords.latitude+", "+position.coords.longitude);
@@ -193,18 +195,14 @@ var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.lo
 geocoder.geocode({'latLng': latlng}, function(results, status) {
 if (status == google.maps.GeocoderStatus.OK) {
 if (results[1]) {
-     request.get('http://www.appliseeit.com/mobile/record_gps.php?num='+num+'&x='+position.coords.latitude+'&y='+position.coords.longitude+'&adress='+results[1].formatted_address).then(function(response276){document.getElementById("affichFormattedAddress").innerHTML="<font size=2 color=grey>"+results[1].formatted_address+"</font>";)}) ;
+     request.get('http://www.appliseeit.com/mobile/record_gps.php?num='+num+'&x='+position.coords.latitude+'&y='+position.coords.longitude+'&adress='+results[1].formatted_address).then(function(response276){document.getElementById("affichFormattedAddress").innerHTML="<font size=2 color=grey>"+results[1].formatted_address+"</font>";}) ;
 }}
 })	
-
 })
 }
-
 function geolocationError(error) { alert("Erreur"); }
-
-}) 	
+})
 })	
-
 }
 
 
