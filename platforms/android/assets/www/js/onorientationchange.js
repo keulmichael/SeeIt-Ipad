@@ -17,6 +17,12 @@
 	document.getElementById('pubaccueil_1').style.width = '45%';
 	document.getElementById('pubaccueil_2').style.width = '45%';
 	}
+	
+	
+//	var theimg = document.getElementById("imageid");  
+	
+//	alert("Image Make: " + EXIF.getTag(theimg, "Make"));
+
 }  
 	
 document.addEventListener('DOMContentLoaded', function(){
