@@ -1,9 +1,17 @@
   function listenerTailleEcran(requeteMedia) {
 	var orientationPortrait = document.getElementById('orientationPortrait');
 	if (requeteMedia.matches) {  
-      	document.getElementById('photoaccueil_1').offsetWidth = '45%';
+      	document.getElementById('photoaccueil_1').style.width = '45%';
+      	document.getElementById('photoaccueil_1').style.width = '45%';
+      	document.getElementById('photoaccueil_1').style.width = '45%';
+      	document.getElementById('photoaccueil_1').style.width = '45%';
+      	document.getElementById('photoaccueil_1').style.width = '45%';
 	} else {  
-	document.getElementById('photoaccueil_1').offsetWidth = '65%';  
+	document.getElementById('photoaccueil_1').style.width = '65%';
+	document.getElementById('photoaccueil_1').style.width = '65%';
+	document.getElementById('photoaccueil_1').style.width = '65%';
+	document.getElementById('photoaccueil_1').style.width = '65%';
+	document.getElementById('photoaccueil_1').style.width = '65%';
 	}
 }  
 	
