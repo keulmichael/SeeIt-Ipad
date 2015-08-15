@@ -27,21 +27,21 @@
 
 <script type="text/javascript">
 var geocoder;
-function initialize() {
+function initialize() {alert('initialize');
 geocoder = new google.maps.Geocoder();
 socket = io.connect('http://websocket-seeit.rhcloud.com:8000');
-	socket.on('connect', function () {
-        alert('You are connected to Server');
-         });  
-        socket.on('newConnection', function (data) {
-        alert(data);
-        });  
-        socket.on('newPhoto', function (data) {
-        alert(data);
-        });  
+//	socket.on('connect', function () {
+ //       alert('You are connected to Server');
+ //        });  
+  //      socket.on('newConnection', function (data) {
+  //      alert(data);
+  //      });  
+  //      socket.on('newPhoto', function (data) {
+  //      alert(data);
+  //      });  
 }
 
-window.onload = function() {initialize();nombrePhotos();};
+window.onload = function() {initialize();nombrePhotos();setInterval(nombrePhotos, 10000);};
 </script>
 </head>
 <body style="visibility:hidden;">
