@@ -20,25 +20,38 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojox/mobile/deviceTheme.js" data-dojo-config="mblThemeFiles: ['base','Accordion']"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
 <script type="text/javascript" src="js/dojox.js"></script>
-<script src='http://websocket-seeit.rhcloud.com:8000/socket.io/socket.io.js'></script>
 <link rel="stylesheet" href="css/camera.css" type="text/css">
 
 
 
 <script type="text/javascript">
 var geocoder;
+
+	var ws = new WebSocket('ws://websocket-seeit.rhcloud.com:8000');
+	    
+ws.onmessage = function (event) { 
+ var data = JSON.parse(event.data);
+    switch(data.type)
+    {
+       case "nouvelle connexion":
+           alert(data.message);
+           break;
+       case "confirmation photo":
+           alert(data.message);
+           break;
+       case "confirmation message":
+           alert(data.message);
+           break;
+    }
+};
+
+function Envoi_photo(){
+var data = { "type" : "envoi photo", "message" : "" };
+var message = JSON.stringify(data);
+ws.send(message);}
+
 function initialize() {alert('initialize');
 geocoder = new google.maps.Geocoder();
-socket = io.connect('http://websocket-seeit.rhcloud.com:8000');
-//	socket.on('connect', function () {
- //       alert('You are connected to Server');
- //        });  
-  //      socket.on('newConnection', function (data) {
-  //      alert(data);
-  //      });  
-  //      socket.on('newPhoto', function (data) {
-  //      alert(data);
-  //      });  
 }
 
 window.onload = function() {initialize();nombrePhotos();setInterval(nombrePhotos, 10000);};
