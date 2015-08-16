@@ -68,7 +68,7 @@ if (settings.positionPaysage==false)
 
 	function accelerometerSuccessPortrait(acceleration) {
 if (acceleration.x>1 || acceleration.x<-1 && acceleration.y<9 && acceleration.z>1 || acceleration.z<-1 ){
-    alert("Veuillez tenir l\'appareil en mode portrait.\nLe blocage en mode portrait peut être activé dans les options.");
+    alert("Veuillez tenir l\'appareil en mode portrait.\nLe blocage en mode portrait peut Ãªtre activÃ© dans les options.");
 		}
 
 	else {
@@ -106,7 +106,7 @@ if (acceleration.x>1 || acceleration.x<-1 && acceleration.y<9 && acceleration.z>
 }
 }
 function accelerometerErrorPortrait() {
-    alert('Veuillez activer l\'accéléromètre');
+    alert('Veuillez activer l\'accÃ©lÃ©romÃ¨tre');
 };								  
 }
 
@@ -116,7 +116,7 @@ navigator.accelerometer.getCurrentAcceleration(accelerometerSuccessPaysage, acce
 
 function accelerometerSuccessPaysage(acceleration) {
 if (acceleration.x<9 || acceleration.x>-9 && acceleration.y<0 || acceleration.y>1 && acceleration.z<0 || acceleration.y>1){
-    alert("Veuillez tenir l'appareil en mode paysage.\nLe blocage en mode portrait peut être activé dans les options.");
+    alert("Veuillez tenir l'appareil en mode paysage.\nLe blocage en mode portrait peut Ãªtre activÃ© dans les options.");
 		}
 
 	else {
@@ -203,7 +203,7 @@ require(["dojo/request"], function(request){
 request.get('http://www.appliseeit.com/mobile/record_gps.php?num='+num+'&x=&y=&adress=').then(function(response271){ 	
 navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
 	
-function geolocationSuccess(position) {alert("Position enregistrée !\n"+position.coords.latitude+", "+position.coords.longitude);
+function geolocationSuccess(position) {alert("Position enregistrÃ©e !\n"+position.coords.latitude+", "+position.coords.longitude);
 require(["dojo/request"], function(request){    
 var num = document.getElementById("num").value;	
 var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -211,24 +211,17 @@ geocoder.geocode({'latLng': latlng}, function(results, status) {
 	if (status == google.maps.GeocoderStatus.OK) {
 if (results[1]) {
       request.get('http://www.appliseeit.com/mobile/record_gps.php?num='+num+'&x='+position.coords.latitude+'&y='+position.coords.longitude+'&adress='+results[1].formatted_address).then(function(response276){document.getElementById("affichFormattedAddress").innerHTML="<font size=2 color=grey>"+results[1].formatted_address+"</font>";}) ;
+
+var data = { "type" : "envoi photo", "lieu" : results[1].formatted_address, "photo" : num };
+var message = JSON.stringify(data);
+ws.send(message);
       }}
 })	
 
     })
 }
 
-function geolocationError(error) {
-switch(error.code){
-    case error.PERMISSION_DENIED:
-      alert("L'utilisateur n'a pas autorisé l'accés à sa position");
-      break;      
-    case error.POSITION_UNAVAILABLE:
-      alert("L'emplacement de l'utilisateur n'a pas pu être déterminé");
-      break;
-    case error.TIMEOUT:
-      alert("Le service n'a pas répondu à temps");
-      break;
-    }
+function geolocationError(error) {alert('erreur');
 }
 	}) 	
 })	
