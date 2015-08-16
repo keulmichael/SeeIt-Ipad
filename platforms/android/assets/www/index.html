@@ -38,6 +38,7 @@ ws.onmessage = function (event) {
            break;
        case "confirmation photo":
            alert("Un utilisateur vient de prendre une photo à " + data.lieu);
+           if(document.getElementById("alertSonVibration").value=='on'){navigator.vibrate([100, 100, 100, 100, 100]);navigator.notification.beep(1);}
            break;
        case "confirmation message":
            alert(data.message);
@@ -198,7 +199,7 @@ window.onload = function() {initialize();nombrePhotos();setInterval(nombrePhotos
 <div data-dojo-type="dojox/mobile/Switch" data-dojo-props="onStateChanged:function(newStateEnregistrerPhoto){changeEnregistrerPhoto(newStateEnregistrerPhoto)}" value="off"></div>
 <li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="rightText:'Nofications'"></li>
 <li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="">Son/Vibration
-<div data-dojo-type="dojox/mobile/Switch" data-dojo-props="onStateChanged:function(newStateAlertSonVibration){changeAlertSonVibration(newStateAlertSonVibration)}" value="off" id="alertSonVibration"></div>
+<div data-dojo-type="dojox/mobile/Switch" data-dojo-props="onStateChanged:function(newStateAlertSonVibration){}" value="off" id="alertSonVibration"></div>
 <li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="">Reconnaissance Vocale
 <div data-dojo-type="dojox/mobile/Switch" data-dojo-props="onStateChanged:function(){Voix();}" value="off"></div>
 </li>
