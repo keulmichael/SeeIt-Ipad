@@ -37,7 +37,7 @@ ws.onmessage = function (event) {
            alert(data.message);
            break;
        case "confirmation photo":
-           alert(data.message);
+           alert("Un utilisateur vient de prendre une photo à " + data.lieu);
            break;
        case "confirmation message":
            alert(data.message);
@@ -197,10 +197,8 @@ window.onload = function() {initialize();nombrePhotos();setInterval(nombrePhotos
 <li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="">Enregistrer dans l'appareil
 <div data-dojo-type="dojox/mobile/Switch" data-dojo-props="onStateChanged:function(newStateEnregistrerPhoto){changeEnregistrerPhoto(newStateEnregistrerPhoto)}" value="off"></div>
 <li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="rightText:'Nofications'"></li>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="">Son
-<div data-dojo-type="dojox/mobile/Switch" data-dojo-props="onStateChanged:function(newStateAlertSon){changeAlertSon(newStateAlertSon)}" value="off" id="alertSon"></div>
-<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="">Vibration
-<div data-dojo-type="dojox/mobile/Switch" data-dojo-props="onStateChanged:function(newStateVibration){changeAlertVibration(newStateVibration)}" value="off" id="alertVibration"></div>
+<li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="">Son/Vibration
+<div data-dojo-type="dojox/mobile/Switch" data-dojo-props="onStateChanged:function(newStateAlertSonVibration){changeAlertSonVibration(newStateAlertSonVibration)}" value="off" id="alertSonVibration"></div>
 <li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="">Reconnaissance Vocale
 <div data-dojo-type="dojox/mobile/Switch" data-dojo-props="onStateChanged:function(){Voix();}" value="off"></div>
 </li>
