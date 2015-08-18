@@ -34,12 +34,16 @@ ws.onmessage = function (event) {
     switch(data.type)
     {
        case "nouvelle connexion":
-           alert(data.message);
+       	var id = Math.floor(Math.random() * 100000000000000 ;
+       sessionStorage.id = id;
+           alert("Connexion d'un nouvel utilisateur !");
            break;
-       case "confirmation photo":
-       	   navigator.vibrate([100, 100, 100, 100, 100]);navigator.notification.beep(1);
-           alert("Un utilisateur vient de prendre une photo à " + data.lieu);
+ase "confirmation photo":
+       	if (data.id != sessionStorage.id){
+       	    alert("Nouvelle photo prise à " + data.lieu);
            //if(document.getElementById("alertSonVibration").value=='on'){navigator.vibrate([100, 100, 100, 100, 100]);navigator.notification.beep(1);}
+           navigator.vibrate([100, 100, 100, 100, 100]);navigator.notification.beep(1);
+       	}
            break;
        case "confirmation message":
            alert(data.message);
