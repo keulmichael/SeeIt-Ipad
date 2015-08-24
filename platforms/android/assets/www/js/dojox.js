@@ -244,6 +244,19 @@ function changeEnregistrerPhoto(value) {
 if (value=='on'){settings.saveToPhotoAlbum=true;}
 else{settings.saveToPhotoAlbum=false;}
 };
+
+function AlertSonVibration(alertSonVibration) {
+if (alertSonVibration=='on')
+{navigator.vibrate([100, 100, 100, 100, 100]);navigator.notification.beep(1);}
+else{}
+};
+
+function AlertNouvelleConnexion(alertNouvelleConnexion) {
+if (alertNouvelleConnexion=='on')
+{navigator.vibrate([100, 100, 100, 100, 100]);navigator.notification.beep(1);}
+else{}
+};
+
 function Voix(){
 if ('webkitSpeechRecognition' in window) {
 var recognition = new webkitSpeechRecognition();
