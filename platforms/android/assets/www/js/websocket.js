@@ -18,9 +18,17 @@ ws.onmessage = function (event) {
        	    
        	}
            break;
+           
        case "confirmation message":
            alert(data.message);
            break
+          
+          
+       case "cron":
+	alert(data.message);
+	break
+
+
        case "confirmation ouvrir appareil photo":
           onCapture();
            break;
