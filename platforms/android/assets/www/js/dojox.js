@@ -422,3 +422,20 @@ function affichLien(photo){
 alert(photo);
 }
 
+require([
+  "dijit/registry",
+  "dojox/mobile",
+  "dojox/mobile/parser",
+  "dojox/mobile/SimpleDialog",
+  "dojox/mobile/Button"
+], function(registry){
+  show = function(dlg,mess){
+  	if (dlg=='dlg_photo'){document.getElementById("textNbPhotosEnLigne").innerHTML=mess;}
+  	if (dlg=='dlg_message'){document.getElementById("textMessageWebsocket").innerHTML=mess;}
+  	if (dlg=='dlg_nouvelle_photo'){document.getElementById("textNouvellePhoto").innerHTML=mess;}
+     registry.byId(dlg).show();
+  };
+  hide = function(dlg){
+    registry.byId(dlg).hide();
+  };
+});
