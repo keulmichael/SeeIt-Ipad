@@ -19,6 +19,7 @@ Michael Host
 <gap:plugin name="org.apache.cordova.dialogs" version="0.2.10" />
 <gap:plugin name="org.apache.cordova.vibration" version="0.3.11" />
 <gap:plugin name="org.apache.cordova.geolocation" version="0.3.10" />
+<gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
 
 
 <gap:platforms>
@@ -33,6 +34,9 @@ Michael Host
 <!-- iPad -->
 <icon src="icon-72.png" gap:platform="ios" width="72" height="72" />
 <icon src="icon-72@2x.png" gap:platform="ios" width="144" height="144" />
+
+<splash src="icon.png">
+
 
 <preference name="phonegap-version" value="3.7.0" />
 <!-- for Android -->
