@@ -26,6 +26,8 @@ Michael Host
 <gap:platform name="android" minVersion="3.6.3" />
 <gap:platform name="webos" />
 </gap:platforms>
+
+<platform name="ios">
 <icon src="icon.png" />
 <!-- iPhone / iPod Touch -->
 <icon src="icon-57.png" gap:platform="ios" width="57" height="57" />
@@ -35,7 +37,7 @@ Michael Host
 <icon src="icon-72.png" gap:platform="ios" width="72" height="72" />
 <icon src="icon-72@2x.png" gap:platform="ios" width="144" height="144" />
 
-<platform name="ios">
+
 <splash src="icon.png">
 </platform>
 
