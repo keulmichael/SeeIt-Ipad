@@ -40,6 +40,9 @@ Michael Host
 </platform>
 
 <gap:splash src="Default.png" gap:platform="ios"  width="300" height="300"/>
+<gap:splash src="Default-Portrait.png" gap:platform="ios" width="500" height="500" />
+<gap:splash src="Default-Landscape.png" gap:platform="ios" width="500" height="500" />
+
 
 <preference name="phonegap-version" value="3.7.0" />
 <!-- for Android -->
