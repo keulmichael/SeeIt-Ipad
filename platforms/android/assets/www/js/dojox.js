@@ -1,24 +1,20 @@
     
-	require(["dojox/mobile/parser", "dojox/mobile/compat", "dojo/domReady!", "dojox/mobile/View", "dojox/mobile/Heading", "dojox/mobile/RoundRectList", "dojox/mobile/ListItem", "dojox/mobile/Switch", "dojox/mobile/RoundRect", "dojox/mobile/RoundRectCategory", "dojox/mobile/ContentPane", "dojox/mobile/Button", "dojox/mobile/ProgressIndicator", "dojo/_base/xhr", "dojox/mobile/FilteredListMixin", "dojox/mobile/compat", "dojox/form/Uploader", "dojox/mobile/SwapView", "dojox/mobile/PageIndicator", "dojox/mobile/Badge", "dojox/mobile/IconContainer", "dojox/mobile/IconItem", "dojox/mobile", "dojox/mobile/RoundRectDataList", "dojo/data/ItemFileReadStore", "dojox/mobile/TextBox", "dojox/mobile/ToggleButton", "dojox/mobile/TabBar", "dojox/mobile/ScrollableView","dojox/mobile/Accordion","dojo/_base/kernel", "dojo/parser", "dojox/dgauges/components/grey/HorizontalLinearGauge", "dojox/mobile/Tooltip", "dojox/mobile/SimpleDialog" ], function (parser) {
+	require(["dojox/mobile/parser", "dojox/mobile/compat", "dojo/domReady!", "dojox/mobile/View", "dojox/mobile/Heading", "dojox/mobile/RoundRectList", "dojox/mobile/ListItem", "dojox/mobile/Switch", "dojox/mobile/RoundRect", "dojox/mobile/RoundRectCategory", "dojox/mobile/ContentPane", "dojox/mobile/Button", "dojox/mobile/ProgressIndicator", "dojo/_base/xhr", "dojox/mobile/FilteredListMixin", "dojox/mobile/compat", "dojox/form/Uploader", "dojox/mobile/SwapView", "dojox/mobile/PageIndicator", "dojox/mobile/Badge", "dojox/mobile/IconContainer", "dojox/mobile/IconItem", "dojox/mobile", "dojox/mobile/RoundRectDataList", "dojo/data/ItemFileReadStore", "dojox/mobile/TextBox", "dojox/mobile/ToggleButton", "dojox/mobile/TabBar", "dojox/mobile/ScrollableView","dojox/mobile/Accordion","dojo/_base/kernel", "dojo/parser", "dojox/dgauges/components/grey/HorizontalLinearGauge", "dojox/mobile/Tooltip" ], function (parser) {
 parser.parse();
 });
 dojoConfig = {
 async: true,
 parseOnLoad: false
 };
-
-
-//require(["dojo/request"], function(request){
-//request.get('http://www.appliseeit.com/mobile/texteTitreAccueil.html').then(function(resptitreAccueil){document.getElementById("titreAccueil").innerHTML=resptitreAccueil;})
-//request.get('http://www.appliseeit.com/mobile/texttexteAjouter.html').then(function(resptexteAjouter){document.getElementById("texteAjouter").innerHTML=resptexteAjouter;})
-//request.get('http://www.appliseeit.com/mobile/texteIntroInfos.html').then(function(respIntroInfos){document.getElementById("IntroInfos").innerHTML=respIntroInfos;})
-//request.get('http://www.appliseeit.com/mobile/texteAideInfos.html').then(function(respAideInfos){document.getElementById("AideInfos").innerHTML=respAideInfos;})
-//request.get('http://www.appliseeit.com/mobile/texteAvenirInfos.html').then(function(respAvenirInfos){document.getElementById("AvenirInfos").innerHTML=respAvenirInfos;})
-//request.get('http://www.appliseeit.com/mobile/textePourquoifaireInfos.html').then(function(respPourquoifaireInfos){document.getElementById("PourquoifaireInfos").innerHTML=respPourquoifaireInfos;})
-//request.get('http://www.appliseeit.com/mobile/texteNouscontacterInfos.html').then(function(respNouscontacterInfos){document.getElementById("NouscontacterInfos").innerHTML=respNouscontacterInfos;})
-//});
-
-
+require(["dojo/request"], function(request){
+request.get('http://www.appliseeit.com/mobile/texteTitreAccueil.html').then(function(resptitreAccueil){document.getElementById("titreAccueil").innerHTML=resptitreAccueil;})
+request.get('http://www.appliseeit.com/mobile/texttexteAjouter.html').then(function(resptexteAjouter){document.getElementById("texteAjouter").innerHTML=resptexteAjouter;})
+request.get('http://www.appliseeit.com/mobile/texteIntroInfos.html').then(function(respIntroInfos){document.getElementById("IntroInfos").innerHTML=respIntroInfos;})
+request.get('http://www.appliseeit.com/mobile/texteAideInfos.html').then(function(respAideInfos){document.getElementById("AideInfos").innerHTML=respAideInfos;})
+request.get('http://www.appliseeit.com/mobile/texteAvenirInfos.html').then(function(respAvenirInfos){document.getElementById("AvenirInfos").innerHTML=respAvenirInfos;})
+request.get('http://www.appliseeit.com/mobile/textePourquoifaireInfos.html').then(function(respPourquoifaireInfos){document.getElementById("PourquoifaireInfos").innerHTML=respPourquoifaireInfos;})
+request.get('http://www.appliseeit.com/mobile/texteNouscontacterInfos.html').then(function(respNouscontacterInfos){document.getElementById("NouscontacterInfos").innerHTML=respNouscontacterInfos;})
+});
 require(["dojo/_base/connect","dojo/ready",
 ], function(connect, ready){
 ready(function(){
@@ -53,7 +49,6 @@ var resAff = res[i].split("_!_");
 var itemWidget = new IconItem({
 icon: "http://www.appliseeit.com/mobile/camera.png",
 label: resAff[1],
-lazy : true,
 Badge: resAff[0],
 moveTo:"#",
 onClick: function(e){
@@ -68,7 +63,7 @@ function(responsePseudoNewPhoto){
 var PseudoNewPhotos=responsePseudoNewPhoto.split("_|_");
 if(PseudoNewPhotos[2]!=''){var adresse=PseudoNewPhotos[2];}
 var heure=PseudoNewPhotos[3].split(" ");
-document.getElementById("messageAlerte").innerHTML="<font color=grey size=2>"+PseudoNewPhotos[1] + ' a pris une photo &agrave; ' + adresse + ' &agrave; ' + heure[1]+"<br> Album : "+PseudoNewPhotos[5]+" - Th&ecirc;me : "+PseudoNewPhotos[6]+"</font>";
+document.getElementById("messageAlerte").innerHTML="<font color=grey size=2>"+PseudoNewPhotos[1] + ' a pris une photo &agrave; ' + adresse + ' &agrave; ' + heure[1]+"<br> Album : "+PseudoNewPhotos[5]+" - Th&ecirc;me : "+PseudoNewPhotos[6]+"</font>";
 })
 request.get('http://www.appliseeit.com/mobile/VerifNewAlbum.php').then(
 function(responsePseudoNewAlbum){
@@ -166,7 +161,7 @@ if(elt[i].types[0] == 'point_of_interest'){if (typeof elt[i].long_name != "undef
 if(elt[i].types[0] == 'premise'){if (typeof elt[i].long_name != "undefined"){var prem = elt[i].long_name;}else{var prem='';}}
 if(elt[i].types[0] == 'transit_station'){if (typeof elt[i].long_name != "undefined"){var sta = elt[i].long_name;}else{var sta='';}}
 }
-document.getElementById("affichLocalisation").innerHTML="<font color=black>Votre photo sera localis&eacute;e &agrave;  <br>"+results[1].formatted_address+"<br><br>"+ num +" "+ street +"<br>"+ cp +" "+ city +"<br>"+ dpt +"<br>"+ reg +"<br>"+ pays +"<br><br>"+responseLocalisationAnnonceur+"</font>"; })
+document.getElementById("affichLocalisation").innerHTML="<font color=black>Votre photo sera localis&eacute;e &agrave;  <br>"+results[1].formatted_address+"<br><br>"+ num +" "+ street +"<br>"+ cp +" "+ city +"<br>"+ dpt +"<br>"+ reg +"<br>"+ pays +"<br><br>"+responseLocalisationAnnonceur+"</font>"; })
 })
 }}
 })
@@ -262,7 +257,36 @@ if (alertNouvelleConnexion=='on')
 else{}
 };
 
-
+function Voix(){
+if ('webkitSpeechRecognition' in window) {
+var recognition = new webkitSpeechRecognition();
+recognition.lang = "fr-FR";
+recognition.continuous = false;
+recognition.interimResults = true;
+recognition.start();
+recognition.onresult = function (event) {
+for (var i = event.resultIndex; i < event.results.length; ++i) {
+if (event.results[i].isFinal) {
+recognition.stop();
+var transcript = event.results[i][0].transcript;alert(transcript);
+var words = transcript.split(' ');
+var u = new SpeechSynthesisUtterance();
+u.text = response;
+u.lang = 'fr-FR';
+u.onend = function () {
+if (callback) {
+callback();
+}deom
+};
+u.onerror = function (e) {
+if (callback) {
+callback(e);
+}
+};
+speechSynthesis.speak(u);
+}}};}
+else{alert('La fonction Voix ne fonctionne pas sur ce navigateur');}
+}
 function CacherCamera(){
 document.getElementById("cadreCamera").style.display = "none";
 }
@@ -285,6 +309,7 @@ if(checkRep[2]=="color=grey"){document.getElementById('afficherTourneeApresCreer
 })
 })
 }
+
 
 
 function changeInfosParis(value) {
@@ -334,6 +359,11 @@ photo.src ='http://www.appliseeit.com/mobile/photos/'+num+'_'+n+'.jpg?v=123';
 require(['dojo/dom' , "dojo/on", "dojo/_base/connect","dojo/ready","dojo/request", "dojox/mobile/ProgressBar"
 ], function(dom, on, connect, ready, request, ProgressBar){
 ready(function(){
+//request.get('https://graph.facebook.com/fql?q=SELECT friend_count FROM user WHERE uid = 1441017086216744').then(
+//request.get('https://graph.facebook.com/100009539529598').then(
+//function(nbamisfacebookJSON){var nbamisfacebook = JSON.parse(nbamisfacebookJSON);
+//document.getElementById('nbamisfacebook').innerHTML='<table><tr><td><font size=2 color="grey">' + nbamisfacebook.data[0].friend_count + ' amis nous suivent sur </font></td><td><img src="http://www.appliseeit.com/mobile/icone-facebook.gif" width="50px"></td></tr></table>';})
+//document.getElementById('nbamisfacebook').innerHTML='<table><tr><td><font size=2 color="grey">Retrouvez nous sur </font><img src="http://www.appliseeit.com/mobile/icone-facebook.gif" width="50px" onTouchstart="openFacebook()"></td></tr></table>';})
 request.get('http://www.appliseeit.com/mobile/affichPhotosAccueil.php?n=1').then(
 function(response441){
 var resPhoto = response441.split("_|_");
@@ -355,6 +385,11 @@ function RafraichirAccueil(){
 require(['dojo/dom' , "dojo/on", "dojo/_base/connect","dojo/ready","dojo/request","dojox/mobile/ProgressBar"
 ], function(dom, on, connect, ready, request, ProgressBar){
 ready(function(){
+//request.get('https://graph.facebook.com/fql?q=SELECT friend_count FROM user WHERE uid = 1441017086216744').then(
+//equest.get('https://graph.facebook.com/100009539529598').then(
+//function(nbamisfacebookJSON){var nbamisfacebook = JSON.parse(nbamisfacebookJSON);
+//document.getElementById('nbamisfacebook').innerHTML='<table><tr><td><font size=2 color="grey">' + nbamisfacebook.data[0].friend_count + ' amis nous suivent sur </font></td><td><img src="http://www.appliseeit.com/mobile/icone-facebook.gif" width="50px"></td></tr></table>';})
+//document.getElementById('nbamisfacebook').innerHTML='<table><tr><td><font size=2 color="grey">Retrouvez nous sur </font><img src="http://www.appliseeit.com/mobile/icone-facebook.gif" width="50px" onTouchstart="alert(\'facebook\');openFacebook()"></td></tr></table>';})
 request.get('http://www.appliseeit.com/mobile/affichPhotosAccueil.php?n=1').then(
 function(response442){
 var resPhoto = response442.split("_|_");
@@ -387,10 +422,6 @@ function affichLien(photo){
 alert(photo);
 }
 
-
-
-
-
 require([
   "dijit/registry",
   "dojox/mobile",
@@ -408,21 +439,3 @@ require([
     registry.byId(dlg).hide();
   };
 });
-
-
-function ChangeStateConstat(State,valueState){
-	alert("ok");
-//alert(State+" - "+valueState);
-document.getElementById(State).value=valueState;	
-}
-
-
-function EnvoiEmailRapport(){
-	alert(document.getElementById("StatePLV").value);
-require(["dojo/request"], function(request){
-var magasinControle = document.getElementById("magasinControle").value;
-request.get('http://www.appliseeit.com/mobile/envoiEmailRapportBtoB.php?magasinControle='+magasinControle).then(
-function(responseEnvoiEmailRapport){document.getElementById("afficherConfirmationEnvoiRapportBtoB").innerHTML=responseEnvoiEmailRapport;}
-)
-})
-}
